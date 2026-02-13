@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Lattimore — Screenwriter & Copywriter</title>
+    <meta name="description" content="Aaron Lattimore — Screenwriter and copywriter with 8+ years of experience crafting compelling narratives for visual media and performance marketing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-black: #050510;
+            --dark-blue: #0a0a2e;
+            --mid-blue: #0f1b4d;
+            --accent-blue: #1e3a8a;
+            --light-blue: #3b82f6;
+            --glow-blue: #60a5fa;
+            --ghost-white: #e8eaf6;
+            --dim-white: #9ca3af;
+            --warm-white: #f1f5f9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: var(--deep-black);
+            color: var(--ghost-white);
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Custom cursor trail */
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--glow-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            mix-blend-mode: screen;
+        }
+        body:hover .cursor-dot { opacity: 1; }
+
+        .cursor-ring {
+            position: fixed;
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid rgba(96, 165, 250, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.3s, width 0.2s, height 0.2s, border-color 0.2s;
+            mix-blend-mode: screen;
+        }
+        body:hover .cursor-ring { opacity: 1; }
+        .cursor-ring.hovering {
+            width: 56px;
+            height: 56px;
+            border-color: var(--glow-blue);
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        /* Floating particles */
+        .particles-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-bg-gradient {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140vmax;
+            height: 140vmax;
+            background: radial-gradient(ellipse at center,
+                rgba(30, 58, 138, 0.15) 0%,
+                rgba(15, 27, 77, 0.08) 35%,
+                transparent 70%);
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+        }
+
+        /* Animated gradient orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            animation: orbDrift 20s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            width: 500px; height: 500px;
+            background: var(--accent-blue);
+            top: 10%; left: -10%;
+            animation-delay: 0s;
+        }
+        .orb-2 {
+            width: 400px; height: 400px;
+            background: var(--mid-blue);
+            bottom: 5%; right: -5%;
+            animation-delay: -7s;
+            animation-duration: 25s;
+        }
+        .orb-3 {
+            width: 300px; height: 300px;
+            background: var(--light-blue);
+            top: 60%; left: 50%;
+            animation-delay: -14s;
+            animation-duration: 18s;
+        }
+
+        @keyframes orbDrift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -30px) rotate(120deg); }
+            66% { transform: translate(-30px, 50px) rotate(240deg); }
+            100% { transform: translate(20px, -20px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .greeting {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--glow-blue);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-name {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards;
+            animation-delay: 0.6s;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--glow-blue) 50%, var(--warm-white) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeSlideUp 1s ease forwards, shimmerText 6s ease-in-out infinite;
+            animation-delay: 0.6s, 2s;
+        }
+
+        @keyframes shimmerText {
+            0% { background-position: 0% center; }
+            50% { background-position: 200% center; }
+            100% { background-position: 0% center; }
+        }
+
+        .hero-title {
+            font-family: 'DM Mono', monospace;
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--dim-white);
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .hero-blurb {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+            line-height: 1.8;
+            color: var(--dim-white);
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 1.3s;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA BUTTONS */
+        .cta-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 1.7s;
+        }
+
+        .cta-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.2rem 2.5rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--ghost-white);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 60px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.15), rgba(10, 10, 46, 0.4));
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            cursor: pointer;
+            letter-spacing: 0.04em;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            border-color: var(--glow-blue);
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.15), inset 0 0 30px rgba(96, 165, 250, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .cta-icon {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover .cta-icon {
+            transform: scale(1.2);
+        }
+
+        .cta-btn .arrow {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .cta-btn:hover .arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards, bobUp 2s ease-in-out infinite;
+            animation-delay: 2.5s, 3s;
+            z-index: 2;
+        }
+
+        .scroll-indicator span {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--dim-white);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--glow-blue), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes bobUp {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* SECTION SHARED */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* DIVIDER */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+            margin: 0 auto 4rem;
+        }
+
+        /* WORK SECTIONS */
+        .work-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .work-card {
+            background: linear-gradient(165deg, rgba(15, 27, 77, 0.3), rgba(5, 5, 16, 0.6));
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            border-radius: 20px;
+            padding: 4rem;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .work-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(30, 58, 138, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        .work-card-number {
+            font-family: 'Instrument Serif', serif;
+            font-size: 5rem;
+            color: rgba(96, 165, 250, 0.08);
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            line-height: 1;
+        }
+
+        .work-card-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--glow-blue);
+            margin-bottom: 1rem;
+        }
+
+        .work-card h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .work-card p {
+            color: var(--dim-white);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .work-enter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.2rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--ghost-white);
+            background: linear-gradient(135deg, var(--accent-blue), var(--mid-blue));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+
+        .work-enter-btn:hover {
+            box-shadow: 0 0 40px rgba(30, 58, 138, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* PASSWORD MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(5, 5, 16, 0.92);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal {
+            background: linear-gradient(165deg, rgba(15, 27, 77, 0.5), rgba(5, 5, 16, 0.8));
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-lock {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            animation: lockPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes lockPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .modal h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal p {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--dim-white);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .password-input-wrap {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--ghost-white);
+            background: rgba(10, 10, 46, 0.6);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            letter-spacing: 0.05em;
+        }
+
+        .password-input:focus {
+            border-color: var(--glow-blue);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.1);
+        }
+
+        .password-input::placeholder {
+            color: rgba(156, 163, 175, 0.5);
+        }
+
+        .password-error {
+            color: #f87171;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            height: 1rem;
+        }
+
+        .password-error.show {
+            opacity: 1;
+        }
+
+        .modal-submit {
+            padding: 0.9rem 2rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--ghost-white);
+            background: linear-gradient(135deg, var(--accent-blue), var(--mid-blue));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.04em;
+        }
+
+        .modal-submit:hover {
+            box-shadow: 0 0 30px rgba(30, 58, 138, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--dim-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--ghost-white);
+        }
+
+        /* SCREENWRITING SECTION (hidden until unlocked) */
+        .screenwriting-content,
+        .copywriting-content {
+            min-height: 100vh;
+            padding: 6rem 2rem;
+            display: none;
+            position: relative;
+        }
+
+        .screenwriting-content.unlocked,
+        .copywriting-content.active {
+            display: block;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .content-header h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .content-header p {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--dim-white);
+            letter-spacing: 0.15em;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .work-item {
+            background: linear-gradient(165deg, rgba(15, 27, 77, 0.25), rgba(5, 5, 16, 0.5));
+            border: 1px solid rgba(96, 165, 250, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .work-item:hover {
+            border-color: rgba(96, 165, 250, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .work-item-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(10, 10, 46, 0.3));
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--dim-white);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .work-item h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item p {
+            font-size: 0.85rem;
+            color: var(--dim-white);
+            line-height: 1.6;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--dim-white);
+            background: rgba(5, 5, 16, 0.7);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .back-btn:hover {
+            color: var(--ghost-white);
+            border-color: var(--glow-blue);
+        }
+
+        .back-btn.visible {
+            display: inline-flex;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-line {
+            width: 40px;
+            height: 1px;
+            background: rgba(96, 165, 250, 0.3);
+            margin: 0 auto 1.5rem;
+        }
+
+        footer p {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--dim-white);
+            letter-spacing: 0.15em;
+        }
+
+        /* EASTER EGG: Konami code activates rainbow mode */
+        body.rainbow-mode {
+            animation: rainbowBg 3s linear infinite;
+        }
+
+        @keyframes rainbowBg {
+            0% { background: #050510; }
+            25% { background: #0a0520; }
+            50% { background: #050a20; }
+            75% { background: #100520; }
+            100% { background: #050510; }
+        }
+
+        body.rainbow-mode .hero-name {
+            background: linear-gradient(90deg, #f87171, #fbbf24, #34d399, #60a5fa, #a78bfa, #f87171);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowText 2s linear infinite;
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+        }
+
+        /* EASTER EGG: Secret message on triple-click of name */
+        .secret-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 1rem 2rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--glow-blue);
+            background: rgba(10, 10, 46, 0.9);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            z-index: 10001;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            backdrop-filter: blur(10px);
+        }
+
+        .secret-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* TYPEWRITER CURSOR */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--glow-blue);
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 1.5rem; }
+            .cta-container { flex-direction: column; align-items: center; gap: 1rem; }
+            .cta-btn { width: 100%; max-width: 300px; justify-content: center; }
+            .work-card { padding: 2.5rem 2rem; }
+            .cursor-dot, .cursor-ring { display: none; }
+            .modal { padding: 2rem; }
+            .section { padding: 4rem 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-blurb { font-size: 0.9rem; }
+        }
+
+        /* Page transitions */
+        .page-main { transition: opacity 0.5s ease; }
+        .page-main.hidden { opacity: 0; pointer-events: none; display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Secret Toast -->
+    <div class="secret-toast" id="secretToast">☕ You found a secret! Hire this guy.</div>
+
+    <!-- Back Button -->
+    <a href="#" class="back-btn" id="backBtn" onclick="goHome(event)">← Back</a>
+
+    <!-- PASSWORD MODAL -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-lock">🔐</div>
+            <h3>Protected Work</h3>
+            <p>This section contains confidential screenwriting samples.</p>
+            <div class="password-input-wrap">
+                <input type="password" class="password-input" id="passwordInput" placeholder="Enter passphrase..." onkeydown="if(event.key==='Enter')checkPassword()">
+            </div>
+            <div class="password-error" id="passwordError">Incorrect passphrase. Try again.</div>
+            <button class="modal-submit" onclick="checkPassword()">Unlock</button>
+        </div>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <div class="page-main" id="pageMain">
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-bg-gradient"></div>
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+
+            <div class="hero-content">
+                <div class="greeting">Welcome — you've found</div>
+                <h1 class="hero-name" id="heroName">Aaron Lattimore</h1>
+                <div class="hero-title">Screenwriter  ·  Copywriter  ·  Storyteller</div>
+                <p class="hero-blurb">
+                    Screenwriter with over 8 years of experience in crafting high-quality scripts for visual media. Proficient in
+                    transforming complex narratives into compelling dialogue, collaborating closely with production teams to produce
+                    engaging content. Notable achievements include maintaining consistent tone and messaging across projects,
+                    ensuring factual accuracy through thorough research. Eager to leverage skills in storytelling and content creation to
+                    drive impactful performance marketing initiatives.
+                </p>
+
+                <div class="cta-container">
+                    <a href="#" class="cta-btn" onclick="openScreenwriting(event)">
+                        <span class="cta-icon">🎬</span>
+                        Screenwriting
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#" class="cta-btn" onclick="openCopywriting(event)">
+                        <span class="cta-icon">✍️</span>
+                        Copywriting
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- SCREENWRITING CARD -->
+        <section class="work-section section" id="screenwritingCard">
+            <div class="work-card" id="card1">
+                <div class="work-card-number">01</div>
+                <div class="work-card-label">Protected Portfolio</div>
+                <h2>Screenwriting</h2>
+                <p>
+                    Scripts, treatments, and narrative work for film and television.
+                    This section is password-protected due to the confidential nature of the material.
+                </p>
+                <button class="work-enter-btn" onclick="openScreenwriting(event)">
+                    Request Access →
+                </button>
+            </div>
+        </section>
+
+        <!-- COPYWRITING CARD -->
+        <section class="work-section section" id="copywritingCard">
+            <div class="work-card" id="card2">
+                <div class="work-card-number">02</div>
+                <div class="work-card-label">Open Portfolio</div>
+                <h2>Copywriting</h2>
+                <p>
+                    Performance marketing copy, brand messaging, email campaigns, and content strategy work.
+                    Browse freely and see the words in action.
+                </p>
+                <button class="work-enter-btn" onclick="openCopywriting(event)">
+                    View Work →
+                </button>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-line"></div>
+            <p>© 2026 Aaron Lattimore · Built with care<span class="typewriter-cursor"></span></p>
+        </footer>
+    </div>
+
+    <!-- SCREENWRITING CONTENT (hidden until password entered) -->
+    <div class="screenwriting-content" id="screenwritingContent">
+        <div class="content-header">
+            <h2>Screenwriting</h2>
+            <p>Scripts · Treatments · Narrative Work</p>
+        </div>
+        <div class="work-grid">
+            <div class="work-item">
+                <div class="work-item-placeholder">Coming Soon</div>
+                <h3>Project Title</h3>
+                <p>Add your screenwriting samples here. Description of the project, your role, and the outcome.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-item-placeholder">Coming Soon</div>
+                <h3>Project Title</h3>
+                <p>Add your screenwriting samples here. Description of the project, your role, and the outcome.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-item-placeholder">Coming Soon</div>
+                <h3>Project Title</h3>
+                <p>Add your screenwriting samples here. Description of the project, your role, and the outcome.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COPYWRITING CONTENT -->
+    <div class="copywriting-content" id="copywritingContent">
+        <div class="content-header">
+            <h2>Copywriting</h2>
+            <p>Performance Marketing · Brand Voice · Content Strategy</p>
+        </div>
+        <div class="work-grid">
+            <div class="work-item">
+                <div class="work-item-placeholder">Coming Soon</div>
+                <h3>Project Title</h3>
+                <p>Add your copywriting samples here. Campaign details, metrics, and the story behind the work.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-item-placeholder">Coming Soon</div>
+                <h3>Project Title</h3>
+                <p>Add your copywriting samples here. Campaign details, metrics, and the story behind the work.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-item-placeholder">Coming Soon</div>
+                <h3>Project Title</h3>
+                <p>Add your copywriting samples here. Campaign details, metrics, and the story behind the work.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== CURSOR TRACKING ==========
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX - 3 + 'px';
+            dot.style.top = mouseY - 3 + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX - 18 + 'px';
+            ring.style.top = ringY - 18 + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        // Cursor hover effect on interactive elements
+        document.querySelectorAll('a, button, .cta-btn, .work-enter-btn, .work-item').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+        });
+
+        // ========== PARTICLES ==========
+        const particlesContainer = document.getElementById('particles');
+        function createParticles() {
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (8 + Math.random() * 15) + 's';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                p.style.width = (1 + Math.random() * 2) + 'px';
+                p.style.height = p.style.width;
+                particlesContainer.appendChild(p);
+            }
+        }
+        createParticles();
+
+        // ========== SCROLL REVEAL CARDS ==========
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.work-card').forEach(card => observer.observe(card));
+
+        // ========== PASSWORD SYSTEM ==========
+        const CORRECT_PASS = 'humanitas in machina';
+
+        function openScreenwriting(e) {
+            e.preventDefault();
+            document.getElementById('passwordModal').classList.add('active');
+            setTimeout(() => document.getElementById('passwordInput').focus(), 300);
+        }
+
+        function closeModal() {
+            document.getElementById('passwordModal').classList.remove('active');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('passwordError').classList.remove('show');
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.trim().toLowerCase();
+            if (input === CORRECT_PASS) {
+                closeModal();
+                showSection('screenwriting');
+            } else {
+                document.getElementById('passwordError').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                // Shake animation
+                const modal = document.querySelector('.modal');
+                modal.style.animation = 'shake 0.4s ease';
+                setTimeout(() => modal.style.animation = '', 400);
+            }
+        }
+
+        // ========== NAVIGATION ==========
+        function openCopywriting(e) {
+            e.preventDefault();
+            showSection('copywriting');
+        }
+
+        function showSection(section) {
+            document.getElementById('pageMain').classList.add('hidden');
+            document.getElementById('backBtn').classList.add('visible');
+
+            if (section === 'screenwriting') {
+                document.getElementById('screenwritingContent').classList.add('unlocked');
+                document.getElementById('copywritingContent').classList.remove('active');
+            } else {
+                document.getElementById('copywritingContent').classList.add('active');
+                document.getElementById('screenwritingContent').classList.remove('unlocked');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goHome(e) {
+            e.preventDefault();
+            document.getElementById('pageMain').classList.remove('hidden');
+            document.getElementById('backBtn').classList.remove('visible');
+            document.getElementById('screenwritingContent').classList.remove('unlocked');
+            document.getElementById('copywritingContent').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close modal on overlay click
+        document.getElementById('passwordModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('passwordModal')) closeModal();
+        });
+
+        // ========== EASTER EGGS ==========
+
+        // 1. Konami Code → rainbow mode
+        const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        let konamiIndex = 0;
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    document.body.classList.toggle('rainbow-mode');
+                    showToast('🌈 Rainbow mode activated! You know the code.');
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // 2. Triple-click name → secret message
+        let nameClickCount = 0;
+        let nameClickTimer;
+        document.getElementById('heroName').addEventListener('click', () => {
+            nameClickCount++;
+            clearTimeout(nameClickTimer);
+            nameClickTimer = setTimeout(() => { nameClickCount = 0; }, 500);
+            if (nameClickCount === 3) {
+                showToast('🎯 Persistence pays off. So does hiring Aaron.');
+                nameClickCount = 0;
+            }
+        });
+
+        // 3. Type "hire" anywhere → confetti-like toast
+        let typedKeys = '';
+        document.addEventListener('keypress', (e) => {
+            // Don't trigger in input fields
+            if (e.target.tagName === 'INPUT') return;
+            typedKeys += e.key.toLowerCase();
+            if (typedKeys.length > 20) typedKeys = typedKeys.slice(-20);
+            if (typedKeys.includes('hire')) {
+                showToast("🎉 Great instinct. Let's make it official!");
+                typedKeys = '';
+            }
+        });
+
+        // 4. Console easter egg
+        console.log('%c👋 Hey there, inspector!', 'font-size: 20px; font-weight: bold; color: #60a5fa;');
+        console.log('%cIf you\'re reading this, you\'re thorough. Aaron likes thorough people.', 'font-size: 14px; color: #9ca3af;');
+        console.log('%c📧 Reach out — good things happen when curious people connect.', 'font-size: 14px; color: #3b82f6;');
+
+        function showToast(msg) {
+            const toast = document.getElementById('secretToast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // ========== SHAKE ANIMATION (for wrong password) ==========
+        const shakeStyle = document.createElement('style');
+        shakeStyle.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-8px); }
+                40% { transform: translateX(8px); }
+                60% { transform: translateX(-4px); }
+                80% { transform: translateX(4px); }
+            }
+        `;
+        document.head.appendChild(shakeStyle);
+    </script>
+
+</body>
+</html>
