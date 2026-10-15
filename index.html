@@ -504,6 +504,64 @@
             border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 20px;
         }
 
+        /* SCRIPT SAMPLES */
+        .script-group { max-width: 1100px; margin: 5rem auto 0; }
+        .script-feature {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+            gap: 2.5rem; align-items: start;
+            background: linear-gradient(165deg, rgba(15, 27, 77, 0.25), rgba(5, 5, 16, 0.5));
+            border: 1px solid rgba(96, 165, 250, 0.08); border-radius: 16px;
+            padding: 2rem; margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+        }
+        .script-feature:hover { border-color: rgba(96, 165, 250, 0.2); }
+        .script-feature-info { min-width: 0; }
+        .script-feature h3 {
+            font-family: 'Instrument Serif', serif; font-weight: 400;
+            font-size: clamp(1.9rem, 3.5vw, 2.6rem); line-height: 1.05;
+            margin-bottom: 0.9rem; text-wrap: balance;
+        }
+        .script-logline {
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.65;
+            color: var(--ghost-white); max-width: 60ch; margin-bottom: 0.6rem;
+        }
+        .script-meta {
+            font-family: 'DM Mono', monospace; font-size: 0.65rem;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--dim-white); margin-bottom: 1.5rem;
+        }
+        .script-loop, .script-still {
+            display: block; width: 100%; aspect-ratio: 16 / 9;
+            object-fit: cover; background: #000; border-radius: 10px;
+        }
+        .script-stills {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem; margin-top: 0.75rem;
+        }
+        .script-media-stack { display: grid; gap: 0.75rem; }
+        .script-page-btn {
+            appearance: none; background: none; border: 0; padding: 0;
+            display: block; width: 100%; text-align: left;
+            color: inherit; font: inherit; cursor: zoom-in;
+        }
+        .script-page {
+            display: block; width: 100%; height: auto; background: #fff;
+            border-radius: 6px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+            transition: transform 0.3s ease;
+        }
+        .script-page-btn:hover .script-page { transform: translateY(-4px); }
+        .script-page-btn:focus-visible { outline: 2px solid var(--glow-blue); outline-offset: 6px; border-radius: 8px; }
+        .script-page-hint {
+            display: block; margin-top: 0.9rem;
+            font-family: 'DM Mono', monospace; font-size: 0.62rem;
+            letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim-white);
+        }
+        #adLightbox img.is-script { max-width: min(92vw, 820px); border-radius: 4px; background: #fff; }
+        @media (max-width: 768px) {
+            .script-feature { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.75rem; }
+        }
+
         /* BACK BUTTON */
         .back-btn {
             position: fixed; top: 2rem; left: 2rem; z-index: 100;
@@ -1172,6 +1230,98 @@
                     <p>Scripted production sample, content cut one.</p>
                 </div>
             </div>
+
+            <!-- SCRIPT SAMPLES -->
+            <div class="script-group">
+                <div class="copy-sub-header">
+                    <span class="copy-sub-label">Script Samples</span>
+                    <div class="copy-sub-line"></div>
+                </div>
+
+                <article class="script-feature">
+                    <div class="script-feature-info">
+                        <span class="video-label">Music Video</span>
+                        <h3>I Am In Your Hands</h3>
+                        <p class="script-logline">A young former inmate navigates a new chapter of life: reconnecting with her son, finding work, and a welcoming community.</p>
+                        <p class="script-meta">Narrative music video · Script excerpt, page 1</p>
+                        <video class="script-loop" src="screenwriting/in-your-hands-mirror.mp4" poster="screenwriting/in-your-hands-mirror-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Fernanda tries on a modest dress in front of a mirror, her reflection showing her in prison clothes"></video>
+                        <div class="script-stills">
+                            <img class="script-still" src="screenwriting/in-your-hands-cell.jpg" alt="Fernanda in a holding cell, holding a photo of her son" loading="lazy">
+                            <img class="script-still" src="screenwriting/in-your-hands-notebook.jpg" alt="João's notebook with a photo of his mother holding him as a toddler" loading="lazy">
+                        </div>
+                    </div>
+                    <button class="script-page-btn" type="button">
+                        <img class="script-page" src="screenwriting/script-in-your-hands.jpg" alt="Script page 1 of I Am In Your Hands" loading="lazy">
+                        <span class="script-page-hint">Click to read the script page</span>
+                    </button>
+                </article>
+
+                <article class="script-feature">
+                    <div class="script-feature-info">
+                        <span class="video-label">Short Film</span>
+                        <h3>Reach Out and Grow</h3>
+                        <p class="script-logline">A young man overcomes his fear of failure to become a force for good in his community.</p>
+                        <p class="script-meta">Filmed in the Hudson Valley · Script excerpt, page 1</p>
+                        <video class="script-loop" src="screenwriting/reach-out-and-grow.mp4" poster="screenwriting/reach-out-and-grow-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Cayden's worst nightmare: tripping in the aisle in front of everyone"></video>
+                    </div>
+                    <button class="script-page-btn" type="button">
+                        <img class="script-page" src="screenwriting/script-reach-out-and-grow.jpg" alt="Script page 1 of Reach Out and Grow" loading="lazy">
+                        <span class="script-page-hint">Click to read the script page</span>
+                    </button>
+                </article>
+
+                <article class="script-feature">
+                    <div class="script-feature-info">
+                        <span class="video-label">Documentary Report</span>
+                        <h3>Publishing Committee 2023</h3>
+                        <p class="script-logline">A multinational effort to deliver audio/video equipment in rural areas of Africa.</p>
+                        <p class="script-meta">Interview-driven report with host and infographics · Script excerpt, page 2</p>
+                        <div class="script-media-stack">
+                            <img class="script-still" src="screenwriting/publishing-committee-infographic.jpg" alt="Infographic: map of Africa beside equipment counts for audio, projection, power and internet" loading="lazy">
+                            <img class="script-still" src="screenwriting/publishing-committee-laptop.jpg" alt="A laptop showing a reed-walled meeting hall in Thaninga, Manhiça, Mozambique" loading="lazy">
+                        </div>
+                    </div>
+                    <button class="script-page-btn" type="button">
+                        <img class="script-page" src="screenwriting/script-publishing-committee.jpg" alt="Script page 2 of the Publishing Committee 2023 report" loading="lazy">
+                        <span class="script-page-hint">Click to read the script page</span>
+                    </button>
+                </article>
+            </div>
+
+            <!-- POSTCARDS -->
+            <div class="script-group">
+                <div class="copy-sub-header">
+                    <span class="copy-sub-label">Postcards</span>
+                    <div class="copy-sub-line"></div>
+                </div>
+
+                <article class="script-feature">
+                    <div class="script-feature-info">
+                        <span class="video-label">Postcard</span>
+                        <h3>Chile</h3>
+                        <p class="script-logline">A brief look into the culture, history, and biodiversity of Chile.</p>
+                        <p class="script-meta">Travel narration script · Excerpt, page 1 of 4 · Red text marks shot cues</p>
+                    </div>
+                    <button class="script-page-btn" type="button">
+                        <img class="script-page" src="screenwriting/script-postcard-chile.jpg" alt="Page 1 of the Chile postcard narration script" loading="lazy">
+                        <span class="script-page-hint">Click to read the script page</span>
+                    </button>
+                </article>
+
+                <article class="script-feature">
+                    <div class="script-feature-info">
+                        <span class="video-label">Postcard</span>
+                        <h3>Luxembourg</h3>
+                        <p class="script-logline">A brief look into the culture, history, and biodiversity of Luxembourg.</p>
+                        <p class="script-meta">Travel narration script · Excerpt, page 1 of 3 · Red text marks shot cues</p>
+                        <video class="script-loop" src="screenwriting/luxembourg-map.mp4" poster="screenwriting/luxembourg-map-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Animated globe turning to Europe, with Luxembourg highlighted"></video>
+                    </div>
+                    <button class="script-page-btn" type="button">
+                        <img class="script-page" src="screenwriting/script-postcard-luxembourg.jpg" alt="Page 1 of the Luxembourg postcard narration script" loading="lazy">
+                        <span class="script-page-hint">Click to read the script page</span>
+                    </button>
+                </article>
+            </div>
         </div>
 
                 <!-- COPYWRITING CONTENT -->
@@ -1629,9 +1779,10 @@
             var lbImg   = document.getElementById('adLightboxImg');
             var lbClose = document.getElementById('adLightboxClose');
 
-            function openLightbox(src, alt) {
+            function openLightbox(src, alt, isScript) {
                 lbImg.src = src;
                 lbImg.alt = alt || '';
+                lbImg.classList.toggle('is-script', !!isScript);
                 lb.classList.add('open');
                 document.body.style.overflow = 'hidden';
             }
@@ -1650,6 +1801,23 @@
                     if (img) openLightbox(img.src, img.alt);
                 });
             });
+
+            // Wire up script page thumbnails
+            document.querySelectorAll('.script-page-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var img = btn.querySelector('img');
+                    if (img) openLightbox(img.src, img.alt, true);
+                });
+            });
+
+            // Respect reduced motion: stop looping clips and give viewers controls
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.script-loop').forEach(function(v) {
+                    v.removeAttribute('autoplay');
+                    v.pause();
+                    v.controls = true;
+                });
+            }
 
             lbClose.addEventListener('click', closeLightbox);
 
